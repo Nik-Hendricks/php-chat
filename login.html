@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Login to  PHP CHAT</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/phpchat.js"></script>
+        <link  rel="stylesheet" href="css/main.css"/>
+    </head>
+    <body>
+        <div class="login-container">
+            <center><h1>Log In</h1></center>
+            <form id="login-form">
+                <input type="text" name="login-username" id="login-username" placeholder="Username"/>
+                <input type="password" name="login-password" id="login-password" placeholder="Password"/>
+                <input type="submit" onclick="sub(event)" value="Log In"/>
+            </form>
+        </div>
+    </body>
+</html>
+<script>
+    //document.getElementById("login-form").addEventListener('submit', sub);
+
+
+    
+    
+    function sub(ev) {
+        ev.preventDefault();
+        console.log("SUB")
+        var login_username = document.getElementById("login-username").value;
+        var login_password = document.getElementById("login-password").value;
+
+        tryLogin(login_username, login_password).then((login_result) => {
+                console.log(login_result)
+                if(login_result != false){
+                    getCookieData(login_result).then((result) => {
+    
+                        console.log(login_result)
+
+                        setCookies(login_result, result).then((result) => {
+                            window.location = "chat.html";
+                        })
+                    })
+                }   
+            }
+        )
+    }
+
+</script>

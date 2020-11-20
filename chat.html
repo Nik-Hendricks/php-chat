@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/phpchat.js"></script>
+        <link  rel="stylesheet" href="css/main.css"/>
+    </head>
+    <body>
+        <div class="sidebar-container" id="sidebar-container">
+        </div>
+        <div class="main-container">
+            <div id="chat-container" class="chat-container">
+            </div>
+            <div class="control-container">
+                <form method="post" onsubmit="send_message(event); return false;">
+                    <input type="text" name="chat-message" id="chat-message" placeholder="Message"/>
+                    
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+document.body.onload = () => {
+    console.log('load')
+    populateSidebar()
+
+    getMessages(getCookie('current_room_uid'), null, 10).then((res) => {
+        res.forEach(item => {
+            prependMessage(item.user_uid, item.message);
+        })
+    })
+    scrollToBottom()
+
+
+}
+
+setInterval(() => {
+    getUnreadMessages(getCookie('user_uid'), getCookie('current_room_uid')).then((res) => {
+        res.forEach(item => {
+            getMessage(item.message_uid, getCookie('user_uid')).then((message) => {
+                //document.getElementById("chat-container").innerHTML += `<div class="message-item"> ${message[0].message} </div>`;
+                appendMessage(message[0].user_uid, message[0].message)
+            })
+        })
+    })
+}, 1000);
+
+
+</script>

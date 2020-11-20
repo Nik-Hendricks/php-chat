@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Login to  PHP CHAT</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/phpchat.js"></script>
+        <link  rel="stylesheet" href="css/main.css"/>
+    </head>
+    <body>
+        <div class="register-container">
+            <center><h1>Register</h1></center>
+            <form id="register-form">
+                <input type="text" name="register-username" id="register-username" placeholder="Username"/>
+                <input type="password" name="register-password" id="register-password" placeholder="Password"/>
+                <input type="submit" onclick="sub(event)" value="Log In"/>
+            </form>
+        </div>
+    </body>
+</html>
+<script>
+
+    function sub(ev){
+        ev.preventDefault();
+
+        var register_username = document.getElementById("register-username").value;
+        var register_password = document.getElementById("register-password").value;
+        checkUserExists
+        checkUserExists(register_username).then((res) => {
+            console.log(res);
+            if(res != true){
+                tryRegister(register_username, register_password).then((register_result) => {
+                    if(register_result != false){
+                        getCookieData(register_result).then((result) => {
+                            document.body.innerHTML += result;
+                            console.log(register_result)
+
+                            setCookies(register_result, result).then((result) => {
+                                var room = getCookie('current_room_uid');
+                                console.log(room)
+                                subscribeToRoom(room).then((res) => {
+                                    console.log(res)
+                                    window.location = "chat.html";
+                                })
+
+                            })
+                        })
+                    }
+                })
+            }else{
+                //error
+            }
+        })
+    }
+
+</script>

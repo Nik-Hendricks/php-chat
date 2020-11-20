@@ -1,0 +1,163 @@
+*{
+    --sidebar-width:250px;
+    --control-container-height:50px;
+    --grey-1:#1e272e;
+    --grey-2:#222f38;
+    --blue-1:#1abc9c;
+    --blue-2:#239b83;
+}
+
+body{
+    background:var(--grey-1);
+}
+
+.sidebar-container{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width: var(--sidebar-width);
+    background:var(--grey-1);
+}
+
+.main-container{
+    position:absolute;
+    left: var(--sidebar-width);
+    right:0;
+    top:0;
+    bottom:0;
+    background:var(--grey-1);
+}
+
+.chat-container{
+    position:absolute;
+    top:10;
+    right:10px;
+    left:10px;
+    bottom: calc(var(--control-container-height) + 10px);
+    background:var(--grey-2);
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+.control-container{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    left:10px;
+    height:calc(var(--control-container-height) - 10px);
+    overflow:none;
+}
+
+.control-container input[type=text]{
+    height:100%;
+    width:100%;
+    outline:none;
+    border:none;
+    border-radius: 5px;
+    background:var(--blue-1);
+    padding-left:10px;
+}
+
+.control-container form{
+    padding:0;
+    margin:0;
+}
+
+.login-container, .register-container{
+    position: absolute;
+    width:400px;
+    margin-right:50%;
+    right:-200px;
+    background:var(--grey-2);
+    padding:20px;
+
+    top:268px;
+}
+
+.login-container input[type=text], input[type=password], .register-container input[type=text], input[type=password]{
+    height:40px;
+    border:none;
+    border-radius:5px;
+    padding:0;
+    margin:0;
+    width:100%;
+    outline:none;
+    margin-top:10px;
+    padding-left:10px;
+    background:var(--blue-2);
+}
+
+::placeholder{
+    color:white;
+}
+
+.login-container input[type=submit], .register-container input[type=submit]{
+    height:40px;
+    border:none;
+    border-radius:5px;
+    padding:0;
+    margin:0;
+    width:100%;
+    outline:none;
+    margin-top:10px;
+    padding-left:10px;
+    background:var(--blue-1);
+    color:white;
+}
+
+.login-container h1, .register-container h1{
+    color:white;
+    font-family: helvetica;
+    font-size: 25px;
+}
+
+#login-form, #register-form{
+    margin-right:10px;
+    margin-left:10px;
+}
+
+.sidebar-item{
+    position: relative;
+    height:40px;
+    width:100%;
+    right:0;
+    left:0;
+    color:white;
+}
+
+.sidebar-item p{
+    padding:0;
+    margin:0;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    font-family: helvetica;
+}
+
+.message-item{
+    position: relative;
+    height:auto;
+    padding:5px;
+    margin:5px;
+    color:white;
+    font-family: helvetica;
+
+}
+
+.message-item .username{
+    position: relative;
+    left:20px;
+    color: var(--blue-2);
+}
+
+.message-item .text{
+    position:relative;
+    left:20px;
+}
+
+.message-split{
+    margin-left:5px;
+    margin-right:5px;
+    border:2px solid var(--grey-1);
+}
