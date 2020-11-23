@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Login to  PHP CHAT</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/phpchat.js"></script>
         <link  rel="stylesheet" href="css/main.css"/>
@@ -35,8 +36,8 @@
 
                             setCookies(register_result, result).then((result) => {
                                 var room = getCookie('current_room_uid');
-                                console.log(room)
-                                subscribeToRoom(room).then((res) => {
+                                var user_uid = getCookie('user_uid');
+                                subscribeToRoom(user_uid, room).then((res) => {
                                     console.log(res)
                                     window.location = "chat.html";
                                 })

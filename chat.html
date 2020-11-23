@@ -1,11 +1,14 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/phpchat.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link  rel="stylesheet" href="css/main.css"/>
     </head>
     <body>
         <div class="sidebar-container" id="sidebar-container">
+            <img src="img/php1.svg"/>
         </div>
         <div class="main-container">
             <div id="chat-container" class="chat-container">
@@ -17,33 +20,39 @@
                 </form>
             </div>
         </div>
+        <div class="hide contextmenu" id="context-menu">
+            <div class="contextmenu-item" onclick="contextDeleteList()"><i class="fa fa-trash"></i><p>Delete</p></div>
+            <div class="contextmenu-item" onclick="contextShareList()"><i class="fa fa-share-alt"></i><p>Share</p></div>
+        </div>
     </body>
 </html>
 <script>
 document.body.onload = () => {
-    console.log('load')
-    populateSidebar()
-
-    getMessages(getCookie('current_room_uid'), null, 10).then((res) => {
+    populateSidebar();
+    setupContextMenu();
+    getMessages(getCookie('current_room_uid'), null, 50).then((res) => {
         res.forEach(item => {
             prependMessage(item.user_uid, item.message);
         })
     })
-    scrollToBottom()
+    
 
 
 }
 
 setInterval(() => {
+    getUnread();
+}, 1000);
+
+
+function getUnread(){
     getUnreadMessages(getCookie('user_uid'), getCookie('current_room_uid')).then((res) => {
         res.forEach(item => {
             getMessage(item.message_uid, getCookie('user_uid')).then((message) => {
-                //document.getElementById("chat-container").innerHTML += `<div class="message-item"> ${message[0].message} </div>`;
                 appendMessage(message[0].user_uid, message[0].message)
             })
         })
     })
-}, 1000);
-
+}
 
 </script>
