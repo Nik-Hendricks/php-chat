@@ -20,6 +20,40 @@ body{
     background:var(--grey-1);
 }
 
+.sidebar-item{
+    position: relative;
+    height:40px;
+    width:100%;
+    right:0;
+    left:0;
+    color:white;
+}
+
+
+.sidebar-container img{
+    margin:30px;
+}
+
+.sidebar-container span{
+    padding:0;
+    margin:0;
+    position: absolute;
+    right:20px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+.sidebar-item p{
+    padding:0;
+    margin:0;
+    position: absolute;
+    right:100px;
+    font-family: helvetica;
+    line-height: 40px;
+    vertical-align: middle;
+    text-transform: capitalize;
+}
+
 .main-container{
     position:absolute;
     left: var(--sidebar-width);
@@ -117,23 +151,6 @@ body{
     margin-left:10px;
 }
 
-.sidebar-item{
-    position: relative;
-    height:40px;
-    width:100%;
-    right:0;
-    left:0;
-    color:white;
-}
-
-.sidebar-item p{
-    padding:0;
-    margin:0;
-    line-height: 40px;
-    vertical-align: middle;
-    text-align: center;
-    font-family: helvetica;
-}
 
 .message-item{
     position: relative;
@@ -160,4 +177,63 @@ body{
     margin-left:5px;
     margin-right:5px;
     border:2px solid var(--grey-1);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--blue-2);
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+.hide{
+    display:none;
+}
+
+.show{
+    display: block;
+}
+
+.contextmenu{
+    position:absolute;
+    width:auto;
+    padding:10px;
+    height:auto;
+    background:#263038;
+    border-radius:5px;
+    -webkit-box-shadow: 6px 6px 8px -2px rgba(0,0,0,0.52);
+    -moz-box-shadow: 6px 6px 8px -2px rgba(0,0,0,0.52);
+    box-shadow: 6px 6px 8px -2px rgba(0,0,0,0.52);
+    font-family: helvetica;
+}
+
+.contextmenu-item{
+    text-align: center;
+    color:var(--blue-2);
+    padding:5px;
+}
+
+.contextmenu h1{
+    color:white;
+    text-transform: capitalize;
+}
+
+.user-contextmenu{
+    width:200px;
+    height:auto;
 }
